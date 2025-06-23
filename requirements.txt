@@ -1,0 +1,7 @@
+fastapi
+httpx
+python-multipart
+pillow
+pytesseract
+python-dotenv
+motor
