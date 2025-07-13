@@ -30,4 +30,14 @@ WORKDIR /app
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy
+# Copy application code
+COPY . .
+
+# Switch to non-privileged user
+USER appuser
+
+# Expose app port
+EXPOSE 8000
+
+# Run app with Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
